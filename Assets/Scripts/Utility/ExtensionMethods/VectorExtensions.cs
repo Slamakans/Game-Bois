@@ -146,5 +146,19 @@ namespace ExtensionMethods {
 		public static Vector3 VectorToEuler(this Vector3 vector) {
 			throw new NotImplementedException();
 		}
+
+		/// <summary>
+		/// Returns the absolute value of every component of the vector.
+		/// </summary>
+		public static Vector2 Abs(this Vector2 vector) {
+			return new Vector2(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
+		}
+
+		/// <summary>
+		/// Returns the absolute value of every component of the vector.
+		/// </summary>
+		public static Vector3 Abs(this Vector3 vector) {
+			return new Vector3(Mathf.Abs(vector.x), Mathf.Abs(vector.y), Mathf.Abs(vector.z));
+		}
 	}
 }
