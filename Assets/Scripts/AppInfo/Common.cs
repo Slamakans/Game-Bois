@@ -6,6 +6,6 @@ namespace AppInfo {
 		public const string NAME = "Game-bois";
 		public const string AUTHOR = "Game bois";
 		public const string WEBSITE = "https://github.com/Slamakans/Game-Bois/";
-		public static readonly Version VERSION = new Version(Version.Label.Prototype, 0, 1, 0);
+		public static readonly Version VERSION = new Version(Version.Label.Prototype, 0, 2, 0);
 	}
 }
