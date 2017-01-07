@@ -18,6 +18,9 @@ public partial class Player : MonoBehaviour {
 	public bool continousJumping = true;
 	/// <summary>Speed of which player rotates towards where they're moving. Value reprecents angles per second.</summary>
 	public float rotationSpeed = 480;
+	/// <summary>Movement axis combined deadzone. Movement is ignored when the input vector magnitude is below this value.</summary>
+	[Range(0,1)]
+	public float movementDeadzone = 0.01f;
 
 	/// <summary>The players X and Z velocity from their movement input. Is overriden each frame in _MovePlayer</summary>
 	private Vector2 move = Vector2.zero;
@@ -26,6 +29,8 @@ public partial class Player : MonoBehaviour {
 
 	float CalculateJumpForce() {
 		/*
+		 * Calculates the amount of force required to reach /jumpHeight/. Including gravity.
+		 * 
 		 * I don't recall where I found this formula but it's pretty basic physics.
 		 * Too bad we DONT GET ANY PHYSICS CLASS IN AN ESTHETICS COURSE.
 		 * 
@@ -36,8 +41,9 @@ public partial class Player : MonoBehaviour {
 
 	private void _MovePlayer() {
 		move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
 		// To circle'ize the input
-		move.Scale(move.normalized.Abs());
+		//move.Scale(move.normalized.Abs());
 		
 		// Speed multiplier
 		move *= moveSpeed;
@@ -62,7 +68,7 @@ public partial class Player : MonoBehaviour {
 			gravity = 0;
 
 		// Deadzone of movement
-		if (move.magnitude > 0.01f) {
+		if (move.magnitude > movementDeadzone) {
 			// Rotate in direction of movement vector
 			float newAngle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, 90 - move.ToDegrees(), rotationSpeed * Time.deltaTime);
 			transform.eulerAngles = Vector3.up * newAngle;

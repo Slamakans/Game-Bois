@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d8cfed9e6cb52f64b8a054a53263d0d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,11 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8330260c983654f4e85841d6191ee5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
   moveSpeed: 15
   midAirMultiplier: 1
   jumpHeight: 15
   continousJumping: 1
   rotationSpeed: 640
+  movementDeadzone: 0.01
 --- !u!136 &136319523220975834
 CapsuleCollider:
   m_ObjectHideFlags: 1
