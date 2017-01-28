@@ -3,7 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public sealed class GameGlobals : SingletonBase<GameGlobals> {
+public sealed class GameGlobals : MonoBehaviour {
+
+	private static GameGlobals instance;
 
 	//[Header("Prefabs")]
 	//public GameObject _questUI;
@@ -24,8 +26,8 @@ public sealed class GameGlobals : SingletonBase<GameGlobals> {
 	public static Player player { get { return instance._player; } }
 	public static b0ss b0ss { get { return instance._b0ss; } }
 
-	protected override void Awake() {
-		base.Awake();
+	private void Awake() {
+		instance = this;
 		if (_canvas != null)
 			_canvasRect = _canvas.GetComponent<RectTransform>();
 	}
